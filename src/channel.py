@@ -2,8 +2,6 @@ from googleapiclient.discovery import build
 import json
 import os
 
-from dotenv import load_dotenv
-
 
 
 class Channel:
