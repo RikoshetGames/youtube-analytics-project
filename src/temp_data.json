@@ -1,0 +1,90 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "T895toG8syxKfoRWaLx6WnUgcXE",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "5_TXrt9k1BGlleXHRbxS1mbsigw",
+      "id": "feg3DYywNys",
+      "contentDetails": {
+        "duration": "PT6M54S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "544",
+        "likeCount": "7",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "vlVlH8_ouHbS4szaA6f2hwkrYNY",
+      "id": "MtWXwMCAApY",
+      "contentDetails": {
+        "duration": "PT28M49S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "1707",
+        "likeCount": "34",
+        "favoriteCount": "0",
+        "commentCount": "4"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "pgzR_32QH7dJZPfIvyrg3O0su8A",
+      "id": "nApYYXYL9qA",
+      "contentDetails": {
+        "duration": "PT42M9S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "2037",
+        "likeCount": "79",
+        "favoriteCount": "0",
+        "commentCount": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "6Jo-SSdslwhyS2yL6x1ZZe-_S_Q",
+      "id": "cUGyMzWQcGM",
+      "contentDetails": {
+        "duration": "PT32M",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "2822",
+        "likeCount": "82",
+        "favoriteCount": "0",
+        "commentCount": "16"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 4,
+    "resultsPerPage": 4
+  }
+}
