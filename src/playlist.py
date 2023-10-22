@@ -29,7 +29,6 @@ class PlayList:
         return f"{self.title}"
 
 
-
     @property
     def total_duration(self) -> timedelta:
         """Возвращает общую длительность плейлиста."""
