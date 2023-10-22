@@ -13,6 +13,7 @@ api_key: str = os.getenv('API_KEY')
 
 class PlayList:
     def __init__(self, playlist_id: str) -> None:
+        """Инициализируется по id плейлиста."""
         self.playlist_id = playlist_id
         api_key: str = os.getenv('API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
@@ -31,6 +32,7 @@ class PlayList:
 
     @property
     def total_duration(self) -> timedelta:
+        """Возвращает общую длительность плейлиста."""
         api_key: str = os.getenv('API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
 
@@ -60,7 +62,7 @@ class PlayList:
 
 
     def show_best_video(self):
-        '''Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)'''
+        """Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)"""
         api_key = os.getenv('API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
         playlist_videos = youtube.playlistItems().list(playlistId=self.playlist_id,
