@@ -2,21 +2,17 @@
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 from datetime import timedelta
+from src.apimixin import APIMixin
 import isodate
 import os
 
-
 load_dotenv()
-# Создаем переменную для API-ключа.
-api_key: str = os.getenv('API_KEY')
 
-
-class PlayList:
+class PlayList(APIMixin):
     def __init__(self, playlist_id: str) -> None:
         """Инициализируется по id плейлиста."""
         self.playlist_id = playlist_id
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
+        youtube = APIMixin.get_service()
         playlists = youtube.playlists().list(
             part='snippet',
             id=playlist_id
@@ -32,8 +28,7 @@ class PlayList:
     @property
     def total_duration(self) -> timedelta:
         """Возвращает общую длительность плейлиста."""
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
+        youtube = APIMixin.get_service()
 
         playlist_videos = youtube.playlistItems().list(
             playlistId=self.playlist_id,
@@ -60,7 +55,7 @@ class PlayList:
 
 
     def show_best_video(self):
-        """Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)"""
+        '''Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)'''
         api_key = os.getenv('API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
         playlist_videos = youtube.playlistItems().list(playlistId=self.playlist_id,

@@ -1,5 +1,6 @@
 
 from googleapiclient.discovery import build
+from src.apimixin import APIMixin
 import os
 from dotenv import load_dotenv
 
@@ -9,7 +10,7 @@ load_dotenv()
 API_KEY: str = os.getenv('API_KEY')
 
 
-class Video:
+class Video(APIMixin):
     """Класс для видео с YouTube."""
 
     def __init__(self, video_id: str) -> None:
@@ -18,8 +19,7 @@ class Video:
         Дальше все данные будут подтягиваться по API.
         """
         self.__video_id = video_id
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
+        youtube = APIMixin.get_service()
         video = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                                id=video_id
                                                ).execute()
@@ -36,7 +36,7 @@ class Video:
         """Возвращает название видео."""
         return f'{self.title}'
 
-class PLVideo(Video):
+class PLVideo(Video, APIMixin):
     """Класс для плейлиста и видео с YouTube."""
 
     def __init__(self, video_id: str, playlist_id: str) -> None:

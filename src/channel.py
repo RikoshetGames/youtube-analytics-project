@@ -1,10 +1,11 @@
 from googleapiclient.discovery import build
+from src.apimixin import APIMixin
 import json
 import os
 
 
 
-class Channel:
+class Channel(APIMixin):
     """Класс для ютуб-канала"""
 
     def __init__(self, channel_id: str) -> None:
@@ -63,17 +64,6 @@ class Channel:
         return self.subscribers_count == other.subscribers_count
 
 
-
-    @classmethod
-    def get_service(cls):
-        """
-        Возвращает объект для работы с YouTube API.
-        """
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
-        return youtube
-
-
     def to_json(self, file_name):
         data = {
             "channel_id": self.channel_id,
@@ -90,8 +80,7 @@ class Channel:
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
+        youtube = APIMixin.get_service()
         channel = (youtube.channels().list(id=self.channel_id, part='snippet,statistics'))
         response = channel.execute()
         print(json.dumps(response, indent=2, ensure_ascii=False))
