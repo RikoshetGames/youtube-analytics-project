@@ -59,7 +59,6 @@ class PlayList:
         return total_duration
 
 
-
     def show_best_video(self):
         """Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)"""
         api_key = os.getenv('API_KEY')
