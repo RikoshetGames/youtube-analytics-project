@@ -56,8 +56,7 @@ class PlayList(APIMixin):
 
     def show_best_video(self):
         '''Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)'''
-        api_key = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
+        youtube = APIMixin.get_service()
         playlist_videos = youtube.playlistItems().list(playlistId=self.playlist_id,
                                                        part='contentDetails',
                                                        maxResults=50,
