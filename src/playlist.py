@@ -12,7 +12,7 @@ class PlayList(APIMixin):
     def __init__(self, playlist_id: str) -> None:
         """Инициализируется по id плейлиста."""
         self.playlist_id = playlist_id
-        youtube = APIMixin.get_service()
+        youtube = self.get_service()
         playlists = youtube.playlists().list(
             part='snippet',
             id=playlist_id
@@ -28,7 +28,7 @@ class PlayList(APIMixin):
     @property
     def total_duration(self) -> timedelta:
         """Возвращает общую длительность плейлиста."""
-        youtube = APIMixin.get_service()
+        youtube = self.get_service()
 
         playlist_videos = youtube.playlistItems().list(
             playlistId=self.playlist_id,
@@ -56,7 +56,7 @@ class PlayList(APIMixin):
 
     def show_best_video(self):
         '''Возвращает ссылку на самое популярное видео из плейлиста (по количеству лайков)'''
-        youtube = APIMixin.get_service()
+        youtube = self.get_service()
         playlist_videos = youtube.playlistItems().list(playlistId=self.playlist_id,
                                                        part='contentDetails',
                                                        maxResults=50,

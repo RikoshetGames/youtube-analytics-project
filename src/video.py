@@ -19,7 +19,7 @@ class Video(APIMixin):
         Дальше все данные будут подтягиваться по API.
         """
         self.__video_id = video_id
-        youtube = APIMixin.get_service()
+        youtube = self.get_service()
         video = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                                id=video_id
                                                ).execute()

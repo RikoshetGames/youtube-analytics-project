@@ -80,7 +80,7 @@ class Channel(APIMixin):
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        youtube = APIMixin.get_service()
+        youtube = self.get_service()
         channel = (youtube.channels().list(id=self.channel_id, part='snippet,statistics'))
         response = channel.execute()
         print(json.dumps(response, indent=2, ensure_ascii=False))
