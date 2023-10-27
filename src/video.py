@@ -19,17 +19,23 @@ class Video(APIMixin):
         Дальше все данные будут подтягиваться по API.
         """
         self.__video_id = video_id
-        youtube = self.get_service()
-        video = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
-                                               id=video_id
-                                               ).execute()
-        snippet = video["items"][0]["snippet"]
-        statistics = video["items"][0]["statistics"]
-        self.title = snippet['title']
-        self.url = f"https://www.youtube.com/watch?v={video_id}"
-        self.view_count = statistics['viewCount']
-        self.like_count = statistics['likeCount']
+        try:
+            youtube = self.get_service()
+            video = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
+                                                   id=video_id
+                                                   ).execute()
+            snippet = video["items"][0]["snippet"]
+            statistics = video["items"][0]["statistics"]
+            self.title = snippet['title']
+            self.url = f"https://www.youtube.com/watch?v={video_id}"
+            self.view_count = statistics['viewCount']
+            self.like_count = statistics['likeCount']
 
+        except:
+            self.title = None
+            self.url = None
+            self.view_count = None
+            self.like_count = None
 
 
     def __str__(self) -> str:
